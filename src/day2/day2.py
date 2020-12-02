@@ -31,7 +31,7 @@ if __name__ == '__main__':
     with open('input.txt') as file:
         rules = file.readlines()
 
-    parsed_input = parse_input(rules)
+    parsed_rules = parse_input(rules)
 
-    print(f"The solution to part 1 is {run_part1(parsed_input)}")
-    print(f"The solution to part 1 is {run_part2(parsed_input)}")
+    print(f"The solution to part 1 is {run_part1(parsed_rules)}")
+    print(f"The solution to part 1 is {run_part2(parsed_rules)}")
