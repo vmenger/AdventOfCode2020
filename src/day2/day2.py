@@ -29,7 +29,7 @@ def run_part2(parsed_input: List[Tuple]):
 if __name__ == '__main__':
 
     with open('input.txt') as file:
-        rules = file.readlines()
+        rules = file.read().splitlines()
 
     parsed_rules = parse_input(rules)
 

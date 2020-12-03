@@ -26,7 +26,7 @@ def find_triple_sum(elems: List[int], target: int):
 def run_part_1():
 
     with open("input.txt") as file:
-        expenses = [int(x) for x in file.readlines()]
+        expenses = [int(x) for x in file.read().splitlines()]
 
     prod = find_double_sum(expenses, 2020)
 
@@ -37,7 +37,7 @@ def run_part_1():
 def run_part_2():
 
     with open("input.txt") as file:
-        expenses = [int(x) for x in file.readlines()]
+        expenses = [int(x) for x in file.read().splitlines()]
 
     prod = find_triple_sum(expenses, 2020)
 
