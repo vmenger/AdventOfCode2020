@@ -5,12 +5,14 @@ def count_trees(rows: List[str], right: int, down: int):
 
     num_trees = 0
 
-    for i, row in enumerate(rows):
+    x, y = 0, 0
 
-        pos = (right * (i // down)) % len(row)
-
-        if ((i % down) == 0) & (row[pos] == '#'):
+    while (x < len(rows)):
+        if rows[x][y] == "#":
             num_trees += 1
+
+        x = x + down
+        y = (y+right) % len(rows[0])
 
     return num_trees
 
