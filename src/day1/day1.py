@@ -23,27 +23,19 @@ def find_triple_sum(elems: List[int], target: int):
 
 
 @timeit
-def run_part_1():
-
-    with open("input.txt") as file:
-        expenses = [int(x) for x in file.read().splitlines()]
-
-    prod = find_double_sum(expenses, 2020)
-
-    print(f"The solution to part 1: {prod}")
+def run_part_1(expenses: List[int]):
+    return find_double_sum(expenses, 2020)
 
 
 @timeit
-def run_part_2():
+def run_part_2(expenses: List[int]):
+    return find_triple_sum(expenses, 2020)
+
+
+if __name__ == '__main__':
 
     with open("input.txt") as file:
         expenses = [int(x) for x in file.read().splitlines()]
 
-    prod = find_triple_sum(expenses, 2020)
-
-    print(f"The solution to part 1: {prod}")
-
-
-if __name__ == '__main__':
-    run_part_1()
-    run_part_2()
+    print(f"The solution to part 1: {run_part_1(expenses)}")
+    print(f"The solution to part 2: {run_part_2(expenses)}")
