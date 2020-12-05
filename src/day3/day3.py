@@ -3,11 +3,9 @@ from typing import List
 
 def count_trees(rows: List[str], right: int, down: int):
 
-    num_trees = 0
+    num_trees, x, y = 0, 0, 0
 
-    x, y = 0, 0
-
-    while (x < len(rows)):
+    while x < len(rows):
         if rows[x][y] == "#":
             num_trees += 1
 

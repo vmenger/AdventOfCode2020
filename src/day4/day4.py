@@ -26,9 +26,9 @@ def is_valid_passport(passport: Dict):
         'iyr': lambda x: 2010 <= int(x) <= 2020,
         'eyr': lambda x: 2020 <= int(x) <= 2030,
         'hgt': lambda x: is_valid_height(x),
-        'hcl': lambda x: re.match(r"^#[0-9a-f]{6}$", x) is not None,
+        'hcl': lambda x: re.match(r"^#[\da-f]{6}$", x) is not None,
         'ecl': lambda x: x in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'],
-        'pid': lambda x: re.match(r"^[0-9]{9}$", x) is not None
+        'pid': lambda x: re.match(r"^\d{9}$", x) is not None
     }
 
     return all(validator(passport[prop]) for prop, validator in validators.items())
