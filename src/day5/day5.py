@@ -17,10 +17,10 @@ def run_part1(boarding_passes: List[str]) -> int:
 def run_part2(boarding_passes: List[str]) -> int:
 
     filled_seats = {seat_id(boarding_pass) for boarding_pass in boarding_passes}
-    open_seats = {i for i in range(2**len(boarding_passes[0]))} - filled_seats
+    open_seats = set(range(2**len(boarding_passes[0]))) - filled_seats
 
     for i in open_seats:
-        if i not in filled_seats and {i-1, i+1}.issubset(filled_seats):
+        if {i-1, i+1}.issubset(filled_seats):
             return i
 
 
