@@ -23,8 +23,8 @@ if __name__ == '__main__':
     with open('input.txt') as file:
         input = file.read().splitlines()
 
-    parents = [re.findall(r"([a-z\s]+) bags contain", line)[0] for line in input]
-    children = [re.findall(r"(\d)+ ([a-z\s]+) bag[s]?", line) or [] for line in input]
+    parents = [re.findall(r"^([a-z\s]+) bags ", line)[0] for line in input]
+    children = [re.findall(r"(\d+) ([a-z\s]+) bag[s]?", line) or [] for line in input]
 
     print(f"Print the solution to part 1 = {run_part1(parents, children)}")
-    print(f"Print the solution to part 1 = {run_part2(parents, children)}")
+    print(f"Print the solution to part 2 = {run_part2(parents, children)}")
