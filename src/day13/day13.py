@@ -9,20 +9,17 @@ def run_part1(timestamp: int, input: List[Tuple[int, int]]):
 
 def run_part2(input: List[Tuple[int, int]]):
 
-    period = input[0][0]
-    timestamp = input[0][1]
+    timestamp, period = 0, 1
 
-    for bus_period, bus_offset in input[1:]:
-        for i in itertools.count():
+    for bus_period, bus_offset in input:
 
-            offset = timestamp + i * period
+        timestamp, period = next(
+            (next_timestamp, period * bus_period)
+            for i in itertools.count()
+            if ((next_timestamp := timestamp + period * i) + bus_offset) % bus_period == 0
+        )
 
-            if (offset + bus_offset) % bus_period == 0:
-                timestamp = offset
-                period *= bus_period
-                break
-
-    return offset
+    return timestamp
 
 
 if __name__ == '__main__':
