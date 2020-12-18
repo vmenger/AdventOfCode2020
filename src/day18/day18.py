@@ -7,12 +7,6 @@ class CustomInt:
     def __int__(self): return int(self.a)
 
 
-def input_to_custom(input: str, replacement_dict: dict, custom_int_class: str):
-    input = "".join([replacement_dict[char] if char in replacement_dict else char for char in input])
-    input = re.sub(r"(\d+)", f"{custom_int_class}(\\1)", input)
-    return input
-
-
 class CustomIntPart1(CustomInt):
 
     def __add__(self, o): return CustomIntPart1(self.a + o.a)
@@ -22,6 +16,12 @@ class CustomIntPart1(CustomInt):
 class CustomIntPart2(CustomInt):
     def __add__(self, o): return CustomIntPart2(self.a * o.a)
     def __mul__(self, o): return CustomIntPart2(self.a + o.a)
+
+
+def input_to_custom(input: str, replacement_dict: dict, custom_int_class: str):
+    input = "".join([replacement_dict[char] if char in replacement_dict else char for char in input])
+    input = re.sub(r"(\d+)", f"{custom_int_class}(\\1)", input)
+    return input
 
 
 def run_part1(input: List[str]):
