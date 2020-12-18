@@ -2,13 +2,11 @@ import re
 from typing import List
 
 class CustomInt:
-
     def __init__(self, a): self.a = a
     def __int__(self): return int(self.a)
 
 
 class CustomIntPart1(CustomInt):
-
     def __add__(self, o): return CustomIntPart1(self.a + o.a)
     def __sub__(self, o): return CustomIntPart1(self.a * o.a)
 
