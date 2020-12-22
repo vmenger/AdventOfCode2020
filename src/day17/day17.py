@@ -11,7 +11,7 @@ def count_neighbours(loc: Tuple, grid: np.array):
 
 def run(input_grid: np.array, iterations: int, size: int, fourth_dimension: bool):
 
-    x_size, y_size = size+2*iterations, size+2*iterations
+    x_size = y_size = size+2*iterations
     z_size = 2*iterations+1
     w_size = 2*iterations+1 if fourth_dimension else 1
 
@@ -28,12 +28,8 @@ def run(input_grid: np.array, iterations: int, size: int, fourth_dimension: bool
             num_neighbours = count_neighbours(loc, grid)
 
             if grid[loc] == 1:
-                if (num_neighbours < 2) or (num_neighbours > 3):
-                    next_grid[loc] = 0
-                else:
-                    next_grid[loc] = 1
-
-            if (grid[loc] == 0) and (num_neighbours == 3):
+                next_grid[loc] = 1 if (2 <= num_neighbours <= 3) else 0
+            elif num_neighbours == 3:
                 next_grid[loc] = 1
 
         grid = next_grid
